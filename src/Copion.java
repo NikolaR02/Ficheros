@@ -34,25 +34,18 @@ public class Copion {
 
     public static void main(String[] args) throws IOException {
         String linea;
-        boolean control;
 
         BufferedReader entrada = new BufferedReader( new FileReader(args[0]));
         BufferedWriter salida = new BufferedWriter( new FileWriter(args[1]));
 
         linea = entrada.readLine();
-        while (linea != null) {
-            control = false;
-            for (int i = 0; i < linea.length() && control != true; i++) {
-                if (linea.charAt(i) == 'a' || linea.charAt(i) == 'e') {
-                    control = true;
-                }
+        while (linea != null) { // 1 dentro de cada if aunque queda mas codigo
 
-            }
-            if (control == true) {
+            if (args[3] == "invertido") {
                 salida.write(Copion.invertir(linea));
-            } else {
+            } else if (args[3] == "igual") {
                 salida.write(linea);
-            }
+            } else {}
             linea = entrada.readLine();
         }
         entrada.close();
